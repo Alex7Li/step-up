@@ -1,4 +1,4 @@
-import './landing.css';
+import './landing.scss';
 import { Pages } from '../constants.js'
 
 function Landing(props) {
@@ -14,7 +14,7 @@ function Landing(props) {
             Step up and dance!
         </h2>
         <form>
-        <input type="button" value="get dancing!" onClick={goToDancePage}/>
+        <input className="dancebutton" type="button" value="get dancing!" onClick={goToDancePage}/>
         </form>
     </div>
   );

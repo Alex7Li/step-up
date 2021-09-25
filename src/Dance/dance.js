@@ -1,12 +1,13 @@
-import './dance.css';
+import './dance.scss';
 import { Pages } from '../constants.js'
 
 function Dance(props) {
   const {setCurPage} = props
-  
-    const goToLandingPage = () => {
-      setCurPage(Pages.LandingPage)
+ 
+  const goToLandingPage = () => {
+    setCurPage(Pages.LandingPage)
   }
+
   return (
     <div>
         <h2>
