@@ -1,32 +1,10 @@
 import './video.scss'
 import { Moves } from '../constants.js'
 import face from './face.jpeg'
+import  Sketchy  from "../sketches/sketch.js";
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
 import Twilio from "../Twilio/twilio"
-// import * as p5 from '../p5.js'
-
-// import * as ml5 from "ml5";
-
-// export default function sketch(p){
-//   let canvas;
-
-//   p.setup = () => {
-//     canvas = p.createCanvas(300, 200);
-//     p.noStroke();
-
-//   }
-
-//   p.draw = () => {
-//     p.background('orangered');
-//     p.ellipse(150, 100, 100, 100);
-//   }
-
-//   p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
-//     if(canvas) //Make sure the canvas has been created
-//       p.fill(newProps.color);
-//   }
-// }
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -69,6 +47,7 @@ function Video() {
     <div>     
       {<Twilio/>}
       <img src={ face } id="image" width="400" alt="" />
+      {<Sketchy/>}
       {predictions}
     </div>
   );
