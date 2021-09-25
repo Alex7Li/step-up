@@ -16,7 +16,7 @@ function Twilio(props) {
   const minConfidence = 0.2;
   const VIDEO_WIDTH = 320;
   const VIDEO_HEIGHT = 240;
-  const frameRate = 10;
+  const frameRate = 3;
 
   const processVideo = () => {
     // Preview screen
@@ -27,7 +27,7 @@ function Twilio(props) {
         // video.srcObject = Sketchy.video;  // from abu's stuff
         const intervalID = setInterval(async () => {
           try {
-            estimateMultiplePoses();
+            // estimateMultiplePoses();
           } catch (err) {
             clearInterval(intervalID)
           }
@@ -36,9 +36,14 @@ function Twilio(props) {
       });
     }
 
+  useEffect(() =>{
+    processVideo()
+  })
+
   const estimateMultiplePoses = () => {
     const video = videoRef.current;
-    
+    console.log("ok...")
+    console.log(video)
     posenet.load()
       .then(function (net) {
         return net.estimatePoses(video, {
@@ -127,7 +132,8 @@ const trackUnsubscribed = (track) => {
       <p>Twilio</p>
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
-        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240" onLoadedData={processVideo}></video>
+        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240"/>
+        {/* onLoadedData={processVideo}></video>*/}
         <button id="button-join" onClick={joinRoom}>Join Room</button>
         <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button>
       </div>
