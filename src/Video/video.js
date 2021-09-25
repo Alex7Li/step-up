@@ -7,6 +7,7 @@ import * as ml5 from "ml5";
 
 // import * as ml5 from "ml5";
 
+<<<<<<< HEAD
 let video
 let classifier
 function preload(){
@@ -22,14 +23,34 @@ function setup() {
     // video.size(320,260);
     // video.hide();
 }
+=======
+// export default function sketch(p){
+//   let canvas;
 
-// STEP 2: CLASSIFY
+//   p.setup = () => {
+//     canvas = p.createCanvas(300, 200);
+//     p.noStroke();
+//   }
+>>>>>>> a67fcb3 (P5 not now)
 
+//   p.draw = () => {
+//     p.background('orangered');
+//     p.ellipse(150, 100, 100, 100);
+//   }
+
+<<<<<<< HEAD
 function draw() {
     // p5.background(0);
     // p5.image(video, 0,0);
 
 }
+=======
+//   p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
+//     if(canvas) //Make sure the canvas has been created
+//       p.fill(newProps.color);
+//   }
+// }
+>>>>>>> a67fcb3 (P5 not now)
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -75,8 +96,5 @@ function Video() {
     </div>
   );
 }
-
-setup();
-draw();
 
 export default Video;
