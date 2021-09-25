@@ -3,9 +3,9 @@ const Pages = {
 	DancePage: "dancepage",
 }
 const Moves = {
-	Twerk: "twerkmove",
-	Floss: "flossmove",
-	NaeNae: "naenaemove",
+	Twerk: "Twerk",
+	Floss: "Floss",
+	NaeNae: "Nae Nae",
 }
 
 export { Pages, Moves }
