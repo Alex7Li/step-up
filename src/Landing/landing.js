@@ -1,13 +1,17 @@
 import './landing.scss';
 import { Pages, Moves } from '../constants.js'
 import { useEffect } from 'react';
+import song from '../Songs/Iron Pyrite.mp3'
 
 function Landing(props) {
   const setCurPage = props.setCurPage
   const setMoveList = props.setMoveList
+  const setSong = props.setSong
+
   useEffect(() => {
     setMoveList([Moves.Floss, Moves.NaeNae, Moves.Twerk])
-  }, [])
+    setSong(song)
+  }, [setMoveList, setSong])
 
   const goToDancePage = () => {
       setCurPage(Pages.DancePage)
