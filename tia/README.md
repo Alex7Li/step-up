@@ -13,3 +13,6 @@ twilio plugins:install @twilio-labs/plugin-serverless
 ```bash
 twilio serverless:deploy
 ```
+
+## Teachable Machine demo
+https://github.com/Alex7Li/step-up/blob/main/tia/assets/teachable_machine/index.html
