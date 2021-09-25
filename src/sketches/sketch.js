@@ -30,7 +30,7 @@ class Sketchy extends React.Component {
     // const canvas;
     // let video;
     preload = (p5) => {
-        // this.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/');
+        this.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/');
     }
 	setup = (p5, parentRef) => {
 		p5.createCanvas(640, 360).parent(parentRef);
@@ -44,14 +44,6 @@ class Sketchy extends React.Component {
 
 	draw = (p5) => {
 		p5.background(0);
-		// p5.fill(255, this.y * 1.3, 0);
-		// p5.ellipse(p5.width / 2, this.y, 50);
-		// if (this.y > p5.height) this.direction = '';
-		// if (this.y < 0) {
-		// 	this.direction = '^';
-		// }
-		// if (this.direction === '^') this.y += 8;
-		// else this.y -= 4;
         p5.tint(255,50,150);
         p5.image(this.video, 0, 0);
         
