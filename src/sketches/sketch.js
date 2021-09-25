@@ -52,7 +52,9 @@ class Sketchy extends React.Component {
 		// }
 		// if (this.direction === '^') this.y += 8;
 		// else this.y -= 4;
+        p5.tint(255,50,150);
         p5.image(this.video, 0, 0);
+        
 	};
 
 	render() {
