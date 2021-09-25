@@ -27,13 +27,17 @@ class Sketchy extends React.Component {
 	direction = '^';
     // const canvas;
     // let video;
+    preload = (p5) => {
+
+    }
 	setup = (p5, parentRef) => {
-		p5.createCanvas(200, 200).parent(parentRef);
-        p5.createCapture(p5.VIDEO);
+		p5.createCanvas(640, 360).parent(parentRef);
+        this.video = p5.createCapture(p5.VIDEO);
         // const sketch  = new p5();
         // sketch.createCanvas(200, 200)
+        this.video.hide();
 
-        // video.size(200,200);
+        // this.video.size(200,200);
 	};
 
 	draw = (p5) => {
@@ -46,14 +50,14 @@ class Sketchy extends React.Component {
 		}
 		if (this.direction === '^') this.y += 8;
 		else this.y -= 4;
-        // p5.image(vidoe, 0, 0);
+        p5.image(this.video, 0, 0);
 	};
 
 	render() {
 		return (
 			<div className="App">
 				<h1>react-p5</h1>
-				<Sketch setup={this.setup} draw={this.draw} />
+				<Sketch setup={this.setup} draw={this.draw} preload={this.preload} />
 			</div>
 		);
 	}
