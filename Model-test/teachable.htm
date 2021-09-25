@@ -15,13 +15,15 @@
     async function init() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
-
+        // window.alert("Initialising");
+        // System.out()
         // load the model and metadata
         // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
         // Note: the pose library adds a tmPose object to your window (window.tmPose)
         model = await tmPose.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
 
+        window.alert("Webcam Setup");
         // Convenience function to setup a webcam
         const size = 200;
         const flip = true; // whether to flip the webcam
@@ -29,6 +31,8 @@
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
+
+        window.alert("Setup complete");
 
         // append/get elements to the DOM
         const canvas = document.getElementById("canvas");
