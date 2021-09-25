@@ -1,8 +1,8 @@
-import './dance.scss';
-import Video from '../Video/video.js'
-import { Pages } from '../constants.js'
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+import { Pages } from '../constants.js';
+import Video from '../Video/video.js';
+import './dance.scss';
 
 function Dance(props) {
   const setCurPage = props.setCurPage
@@ -15,7 +15,7 @@ function Dance(props) {
 
   const [currentMoveInd, setCurrentMoveInd] = useState(0)
 
-  // Play/Pause the song when loading/leaving the page
+  // Play/Pause the song when loading/leaving the page.
   useEffect(() => {
     play()
     return () => {
@@ -26,7 +26,7 @@ function Dance(props) {
   // Change the move every few seconds.
   useEffect(() => {
     const interval = setInterval(() => {
-     setCurrentMoveInd(currentMoveInd + 1 % moveList.length)
+     setCurrentMoveInd((currentMoveInd + 1) % moveList.length)
     }, 3000);
     return () => clearInterval(interval);
   });
