@@ -10,10 +10,6 @@ Add your Account SID, API Key, and API Key Secret to your `.env` and then instal
 ```bash
 twilio plugins:install @twilio-labs/plugin-serverless
 ```
-
-You can then see what commands the Serverless Toolkit offers by running
 ```bash
-twilio serverless
+twilio serverless:deploy
 ```
-Run `twilio serverless:deploy` and <em>tada</em> grab that HTML site, share it with some friends, and join the room.
-![tilde, me, mica](https://lh5.googleusercontent.com/vBIw4x95wxdQTH8aYxFnkasXxyae_3KwZL0YsDa5LfePnakr4XAeY8RVQVzk0nzx6bwpjCNV-S3haPAYatHC--bXiIugW58EGYHq7mA1iXQC3i0CWePQgcTmIgz3vlzydVJcGHJo)
