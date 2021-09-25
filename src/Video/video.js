@@ -3,7 +3,7 @@ import { Moves } from '../constants.js'
 import face from './face.jpeg'
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
-import * as p5 from '../p5.js'
+// import * as p5 from '../p5.js'
 
 // import * as ml5 from "ml5";
 
@@ -11,23 +11,23 @@ let video
 let classifier
 function preload(){
     console.log("Preloading!")
-    p5.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/')
+    // p5.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/')
     console.log("Preloaded!")
 }
 
 function setup() {
-    p5.createCanvas(320, 260);
+    // p5.createCanvas(320, 260);
     //   create video
-    video = p5.createCapture(VIDEO);
-    video.size(320,260);
-    video.hide();
+    // video = p5.createCapture(VIDEO);
+    // video.size(320,260);
+    // video.hide();
 }
 
 // STEP 2: CLASSIFY
 
 function draw() {
-    p5.background(0);
-    p5.image(video, 0,0);
+    // p5.background(0);
+    // p5.image(video, 0,0);
 
 }
 
