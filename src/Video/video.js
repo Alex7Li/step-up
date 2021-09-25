@@ -7,29 +7,24 @@ import * as ml5 from "ml5";
 
 // import * as ml5 from "ml5";
 
-let video
-let classifier
-function preload(){
-    console.log("Preloading!")
-    // p5.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/')
-    console.log("Preloaded!")
-}
+// export default function sketch(p){
+//   let canvas;
 
-function setup() {
-    // p5.createCanvas(320, 260);
-    //   create video
-    // video = p5.createCapture(VIDEO);
-    // video.size(320,260);
-    // video.hide();
-}
+//   p.setup = () => {
+//     canvas = p.createCanvas(300, 200);
+//     p.noStroke();
+//   }
 
-// STEP 2: CLASSIFY
+//   p.draw = () => {
+//     p.background('orangered');
+//     p.ellipse(150, 100, 100, 100);
+//   }
 
-function draw() {
-    // p5.background(0);
-    // p5.image(video, 0,0);
-
-}
+//   p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
+//     if(canvas) //Make sure the canvas has been created
+//       p.fill(newProps.color);
+//   }
+// }
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -75,8 +70,5 @@ function Video() {
     </div>
   );
 }
-
-setup();
-draw();
 
 export default Video;
