@@ -30,7 +30,7 @@ class Sketchy extends React.Component {
     // const canvas;
     // let video;
     preload = (p5) => {
-        this.classifier = ml5.poseNet('https://teachablemachine.withgoogle.com/models/3iU5gtESu/');
+        // this.classifier = ml5.poseNet('https://teachablemachine.withgoogle.com/models/3iU5gtESu/');
     }
 	setup = (p5, parentRef) => {
 		p5.createCanvas(640, 360).parent(parentRef);
