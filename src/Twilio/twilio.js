@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react';
+import  Sketchy  from "../sketches/sketch.js";
+
 const posenet = require('@tensorflow-models/posenet');
 const axios = require('axios').default;
 const { connect } = require('twilio-video');
+
 
 function Twilio(props) {
   const TWILIO_DOMAIN = "tfvideo-9931-dev.twil.io";
@@ -20,7 +23,7 @@ function Twilio(props) {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(vid => {
         const video = videoRef.current;
-        video.srcObject = vid;
+        video.srcObject = Sketchy.video;  // from abu's stuff
         const intervalID = setInterval(async () => {
           try {
             estimateMultiplePoses();
