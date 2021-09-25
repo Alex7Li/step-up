@@ -45,8 +45,8 @@ function Video() {
 
   return (
     <div>     
-      {<Twilio/>}
       <img src={ face } id="image" width="400" alt="" />
+      {<Twilio/>}
       {<Sketchy/>}
       {predictions}
     </div>
