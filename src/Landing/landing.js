@@ -2,7 +2,7 @@ import './landing.scss';
 import { Pages } from '../constants.js'
 
 function Landing(props) {
-  const {setCurPage} = props
+  const setCurPage = props.setCurPage
 
   const goToDancePage = () => {
       setCurPage(Pages.DancePage)

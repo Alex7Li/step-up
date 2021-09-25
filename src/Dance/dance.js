@@ -3,7 +3,7 @@ import Video from '../Video/video.js'
 import { Pages } from '../constants.js'
 
 function Dance(props) {
-  const {setCurPage} = props
+  const setCurPage = props.setCurPage
 
   const goToLandingPage = () => {
     setCurPage(Pages.LandingPage)
@@ -11,7 +11,7 @@ function Dance(props) {
 
   return (
     <div>
-      {Video()}
+      {<Video/>}
       <input type="button" value="go back" onClick={goToLandingPage}/>
     </div>
   );

@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       <header></header>
-      {curPage === Pages.LandingPage && Landing({setCurPage})}
-      {curPage === Pages.DancePage && DancePage({setCurPage})}
+      {curPage === Pages.LandingPage && <Landing setCurPage={setCurPage}/>}
+      {curPage === Pages.DancePage && <DancePage setCurPage={setCurPage}/>}
     </div>
   );
 }
