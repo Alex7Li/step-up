@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Landing from './Landing/landing.js'
 import DancePage from './Dance/dance.js'
+// import * as p5 from './p5.js'
 import { Pages, Moves } from './constants.js'
 import pyrite from './Songs/Lemaitre - Iron Pyrite.mp3'
 
