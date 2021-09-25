@@ -3,6 +3,7 @@ import { Moves } from '../constants.js'
 import face from './face.jpeg'
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
+import Twilio from "../Twilio/twilio"
 // import * as p5 from '../p5.js'
 
 // import * as ml5 from "ml5";
@@ -13,6 +14,7 @@ import * as ml5 from "ml5";
 //   p.setup = () => {
 //     canvas = p.createCanvas(300, 200);
 //     p.noStroke();
+
 //   }
 
 //   p.draw = () => {
@@ -65,6 +67,7 @@ function Video() {
 
   return (
     <div>     
+      {<Twilio/>}
       <img src={ face } id="image" width="400" alt="" />
       {predictions}
     </div>
