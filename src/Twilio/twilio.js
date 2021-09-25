@@ -18,7 +18,7 @@ function Twilio(props) {
   const VIDEO_HEIGHT = 240;
   const frameRate = 10;
 
-  useEffect(() => {
+  const processVideo = () => {
     // Preview screen
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(vid => {
@@ -34,14 +34,12 @@ function Twilio(props) {
         return () => clearInterval(intervalID)
       });
     }
-  )
 
   const estimateMultiplePoses = () => {
     const video = videoRef.current;
     
     posenet.load()
       .then(function (net) {
-        console.log("estimateMultiplePoses .... ");
         return net.estimatePoses(video, {
           decodingMethod: "single-person",
         });
@@ -49,7 +47,6 @@ function Twilio(props) {
       .then(function (poses) {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        console.log(`got Poses ${JSON.stringify(poses)}`);
         canvas.width = VIDEO_WIDTH;
         canvas.height = VIDEO_HEIGHT;
         ctx.clearRect(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
@@ -69,12 +66,10 @@ function Twilio(props) {
   const joinRoomButton = document.getElementById("button-join");
   const leaveRoomButton = document.getElementById("button-leave");
   const site = `https://${TWILIO_DOMAIN}/video-token`;
-  console.log(`site ${site}`);
   const joinRoom = () => {
     // get access token
     axios.get(site).then(async (body) => {
       const token = body.data.token;
-      console.log(token);
 
       Video.connect(token, { name: ROOM_NAME }).then((room) => {
         console.log(`Connected to Room ${room.name}`);
@@ -134,7 +129,7 @@ const trackUnsubscribed = (track) => {
       <p>Twilio</p>
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
-        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240"></video>
+        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240" onLoadedData={processVideo}></video>
         <button id="button-join" onClick={joinRoom}>Join Room</button>
         <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button>
       </div>
