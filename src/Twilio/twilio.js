@@ -23,7 +23,8 @@ function Twilio(props) {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(vid => {
         const video = videoRef.current;
-        video.srcObject = Sketchy.video;  // from abu's stuff
+        video.srcObject = vid;
+        // video.srcObject = Sketchy.video;  // from abu's stuff
         const intervalID = setInterval(async () => {
           try {
             estimateMultiplePoses();
@@ -67,11 +68,9 @@ function Twilio(props) {
   const leaveRoomButton = document.getElementById("button-leave");
   const site = `https://${TWILIO_DOMAIN}/video-token`;
   const joinRoom = () => {
-    // get access token
-    axios.get(site).then(async (body) => {
-      const token = body.data.token;
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1LTE2MzI2MTAxMzEiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJ5czF0dGlod3NzNDdtd2FpbHZkN2oiLCJ2aWRlbyI6eyJyb29tIjoidGYifX0sImlhdCI6MTYzMjYxMDEzMSwiZXhwIjoxNjMyNjEzNzMxLCJpc3MiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1Iiwic3ViIjoiQUMwMDg0NDg4NjFiZDEzOTZjMmZjMjA2NmY4YmJhNjBkNSJ9.wymIMb-XSVdGsaT0TPUliAHMzpBwyAs5ysgf2Kys9J0";
 
-      Video.connect(token, { name: ROOM_NAME }).then((room) => {
+      connect(token, { name: ROOM_NAME }).then((room) => {
         console.log(`Connected to Room ${room.name}`);
         videoRoom = room;
 
@@ -85,7 +84,6 @@ function Twilio(props) {
         joinRoomButton.disabled = true;
         leaveRoomButton.disabled = false;
       });
-    });
   };
   const leaveRoom = () => {
     videoRoom.disconnect();
