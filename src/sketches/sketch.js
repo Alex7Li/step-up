@@ -17,6 +17,7 @@
 // }
 import React from 'react';
 // import ReactDOM from 'react-dom';
+import Twilio from "../Twilio/twilio"
 import Sketch from 'react-p5';
 import * as p5 from 'p5'
 import * as ml5 from "ml5";
@@ -33,7 +34,7 @@ class Sketchy extends React.Component {
     }
 	setup = (p5, parentRef) => {
 		p5.createCanvas(640, 360).parent(parentRef);
-        this.video = p5.createCapture(p5.VIDEO);
+        this.video = p5.createCapture(Twilio.Video);
         // const sketch  = new p5();
         // sketch.createCanvas(200, 200)
         this.video.hide();
