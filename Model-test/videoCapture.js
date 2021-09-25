@@ -5,13 +5,10 @@
     let video
 
     function setup() {
-    createCanvas(640, 520);
-    //   create video
-    
-    video = createCapture(VIDEO);
-    video.hide();
-    
-    // Step 2: Start Classifying
+        createCanvas(640, 520);
+        //   create video
+        video = createCapture(VIDEO);
+        video.hide();
     }
 
     // STEP 2: CLASSIFY
