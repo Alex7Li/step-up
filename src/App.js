@@ -13,7 +13,7 @@ import Navbar from './Landing/Navbar';
 
 function App() {
   const [curPage, setCurPage] = useState(Pages.LandingPage)
-  const [moveList, setMoveList] = useState([Moves.Floss, Moves.NaeNae, Moves.Twerk])
+  const [moveList, setMoveList] = useState([Moves.Floss, Moves.CanCan, Moves.Disco])
   const [song, setSong] = useState(pyrite)
   const [color, setColor] = useState([Math.random()*255, Math.random()*255, Math.random()*255])
 

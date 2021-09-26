@@ -1,14 +1,16 @@
 import pyrite from './Songs/Lemaitre - Iron Pyrite.mp3'
 import sparrow from './Songs/Lemaitre, Emelie Hollow - Sparrow.mp3'
 import circles from './Songs/Vanic & Machineheart - Circles.mp3'
+
 const Pages = {
 	LandingPage: "landingpage",
 	DancePage: "dancepage",
 }
+
 const Moves = {
-	Twerk: "Twerk",
+	Disco: "Disco",
 	Floss: "Floss",
-	NaeNae: "Nae Nae",
+	CanCan: "Can Can",
 }
 
 const Songs = {
