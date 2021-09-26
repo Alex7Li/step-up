@@ -75,8 +75,11 @@ function Twilio(props) {
   const joinRoomButton = document.getElementById("button-join");
   const leaveRoomButton = document.getElementById("button-leave");
   const site = `https://${TWILIO_DOMAIN}/video-token`;
+
   const joinRoom = () => {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1LTE2MzI2MTg4OTQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiI5a25qOXNtODd6dWptc25lOWswd3JpIiwidmlkZW8iOnsicm9vbSI6InRmIn19LCJpYXQiOjE2MzI2MTg4OTQsImV4cCI6MTYzMjYyMjQ5NCwiaXNzIjoiU0sxNmVmYTllODZkZmJhOWNkMTk3ZDM4OTJkMTdjNzNjNSIsInN1YiI6IkFDMDA4NDQ4ODYxYmQxMzk2YzJmYzIwNjZmOGJiYTYwZDUifQ.b7isol3HmcXpUctKjn-LqkMXDKFi77RQnxLI2XzuuhE";
+    axios.get(`https://${TWILIO_DOMAIN}/video-token`).then(async (body) => {
+      const token = body.data.token;
+      console.log(token);
 
       connect(token, { name: ROOM_NAME }).then((room) => {
         console.log(`Connected to Room ${room.name}`);
@@ -92,6 +95,7 @@ function Twilio(props) {
         joinRoomButton.disabled = true;
         leaveRoomButton.disabled = false;
       });
+    });
   };
   const leaveRoom = () => {
     videoRoom.disconnect();
