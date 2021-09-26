@@ -136,7 +136,7 @@ const trackUnsubscribed = (track) => {
 }
   return (
     <div>
-      <p>Twilio</p>
+      {/* <p>Twilio</p> */}
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
         <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240"/>
