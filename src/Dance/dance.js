@@ -61,14 +61,67 @@ function Dance(props) {
   return (
     <div className='hero-container'>
       <video className='video-bg' src='/videos/lasers.mp4' autoPlay loop muted />
-      <p>
-        Dance Move: {moveList[currentMoveInd]}
-      </p>
-      <p>Your score: {score}</p>
-      <p>Opponent score: {otherScore}</p>
-      <p>Moves Left: {movesLeft}</p>
-      {<Video setScore={setScore} score={score} move={moveList[currentMoveInd]}/>}
+      {/* <div class="fab-container-left">
+          <div class="fab fab-icon-holder">
+            <i class="fas fa-play"></i>
+          </div>
+          <ul class="fab-options">
+            <li>
+                <span class="fab-label" >Join Room</span>
+                <div class="fab-icon-holder">
+                  <i class="fas fa-music"></i>
+                </div>
+            </li>
+            <li>
+              <span class="fab-label">Disconnect</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-phone-slash"></i>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Go Back</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </li>
+          </ul>
+        </div> */}
+      <p class="fixed-para-1">Dance Move: {moveList[currentMoveInd]}</p>
+      <p class="fixed-para-2">Friend's score: {otherScore}</p>
+      <p class="fixed-para-3">Your score: {score}</p>
+      <p class="fixed-para-4">Moves Left: {movesLeft}</p>
+
+      {<Video setScore={setScore} score={score} move={moveList[currentMoveInd]} setCurPage={props.setCurPage}/>}
       {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
+      {/* <div class="fab-container">
+        <div class="fab fab-icon-holder">
+          <i class="fas fa-play"></i>
+        </div>
+        <ul class="fab-options">
+          <li>
+            <button id="button-join" onClick={joinRoom} >
+              <span class="fab-label">Join Room</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-music"></i>
+              </div>
+              </button>
+          </li>
+          <li>
+            <span class="fab-label">Disconnect</span>
+            <div class="fab-icon-holder">
+              <i class="fas fa-sign-out"></i>
+            </div>
+          </li>
+          <li>
+            <button value="go back" onClick={goToLandingPage}>
+              <span class="fab-label">Go Back</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
       <div className='hero-btns'>
         <Button
           className='btns'
@@ -79,7 +132,7 @@ function Dance(props) {
         >
           Go Back
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

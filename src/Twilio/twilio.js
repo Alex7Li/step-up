@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Pages } from '../constants.js';
+import '../App.css';
 import  Sketchy  from "../sketches/sketch.js";
 import { Button } from '../Landing/Button'
 import '../Landing/landing.css';
@@ -9,6 +11,7 @@ const { connect } = require('twilio-video');
 
 
 function Twilio(props) {
+  const setCurPage = props.setCurPage
   const TWILIO_DOMAIN = "tfvideo-9931-dev.twil.io";
   const ROOM_NAME = 'tf';
   const Video = Twilio.Video;
@@ -141,13 +144,43 @@ const trackSubscribed = (div, track) => {
 const trackUnsubscribed = (track) => {
   track.detach().forEach(element => element.remove());
 }
+const goToLandingPage = () => {
+  console.log("Pressed back button")
+  setCurPage(Pages.LandingPage)
+}
   return (
     <div>
       {/* <p>Twilio</p> */}
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
-        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="1" height="1"/>
-        <div className='hero-btns'>
+        <video id="video-people" ref={videoRef} autoPlay muted={true} position="relative" width="1" height="1"/>
+
+        <div class="fab-container">
+          <div class="fab fab-icon-holder">
+            <i class="fas fa-play"></i>
+          </div>
+          <ul class="fab-options">
+            <li>
+              <span class="fab-label" >Join Room</span>
+              <div class="fab-icon-holder" onClick={joinRoom}>
+                <i class="fas fa-music"></i>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Disconnect</span>
+              <div class="fab-icon-holder" onClick={leaveRoom}>
+                <i class="fas fa-phone-slash"></i>
+              </div>
+            </li>
+            <li  >
+              <span class="fab-label">Go Back</span>
+              <div class="fab-icon-holder" onClick={goToLandingPage}>
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+        {/* <div className='hero-btns'>
           <Button
             className='btns'
             buttonStyle='btn--primary'
@@ -166,9 +199,7 @@ const trackUnsubscribed = (track) => {
           >
             Leave Room
           </Button>
-                  {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
-        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
-        </div> 
+        </div>  */}
         <div id='pvids'></div>
       </div>
     </div>

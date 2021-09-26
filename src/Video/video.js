@@ -47,7 +47,7 @@ function Video(props) {
   return (
     <div>     
       {/* <img src={ face } id="image" width="400" alt="" /> */}
-      {<Twilio/>}
+      {<Twilio setCurPage={props.setCurPage}/>}
       {<Sketchy setScore={props.setScore} score={props.score} my_id={my_id} move={props.move}/>}
       {predictions}
     </div>
