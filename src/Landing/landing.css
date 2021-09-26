@@ -6,6 +6,26 @@
   z-index: -1;
 }
 
+.participant-video {
+  width: 25%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pvids {
+  /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+  height: 25%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+}
+
 .hero-container {
   /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
   height: 100vh;
