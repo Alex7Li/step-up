@@ -16,6 +16,7 @@ function Dance(props) {
 
   useEffect(() => {
     const countRef = firebase.database().ref("Metrics")
+    console.log("ah")
     countRef.on("value", (snapshot) => {
       const metrics = snapshot.val();
       console.log(metrics);
@@ -27,7 +28,7 @@ function Dance(props) {
       }
       setOtherScore(anotherScore);
     });
-    return countRef.off();
+    // return countRef.off();
   }, [score]);
 
   const goToLandingPage = () => {
