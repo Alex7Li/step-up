@@ -22,15 +22,7 @@ class Sketchy extends React.Component {
     state = 'waiting';
     targetLabel = null;
     str = ""
-    // ketPressed(){
-    //     this.targetLabel = p5.keyCode;
-    //     console.log(this.targetLabel)
-    //     setTimeout( function () {
-    //         console.log('collecting')
-    //         this.state = 'collecting';
-    //     }, 3000 );
-        
-    // }
+
     preload = (p5) => {
 
     } 
@@ -42,11 +34,6 @@ class Sketchy extends React.Component {
         this.video.hide();
         this.poseNet = ml5.poseNet(this.video, this.modelReady);
         this.poseNet.on('pose', this.poseNetOn)
-        let options = {
-            input: 34,
-            output: 2,
-            task: 'classification'
-        }
 
         // this.flossNet = ml5.neuralNetwork(options)
 	};
