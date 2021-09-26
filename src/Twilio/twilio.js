@@ -122,7 +122,7 @@ const participantConnected = (participant) => {
     }
   });
   document.getElementById("pvids").appendChild(div);
-  
+  // document.body.appendChild(div);
   //new div
 }
 
@@ -163,10 +163,10 @@ const trackUnsubscribed = (track) => {
           >
             Leave Room
           </Button>
+                  {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
+        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
         </div> 
         <div id='pvids'></div>
-        {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
-        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
       </div>
     </div>
   );
