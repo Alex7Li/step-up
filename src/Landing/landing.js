@@ -49,7 +49,7 @@ function Landing(props) {
   //   </div>
   // );
   <div className='hero-container'>
-      <video src='/videos/video-2.mp4' autoPlay loop muted />
+      <video className='video-bg' src='/videos/video-2.mp4' autoPlay loop muted />
       <h1>Twerk Out to Work Out!</h1>
       <p>Select a song to dance:</p>
       <div className='hero-btns'>

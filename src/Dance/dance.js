@@ -34,7 +34,7 @@ function Dance(props) {
 
   return (
     <div className='hero-container'>
-      <video src='/videos/lasers.mp4' autoPlay loop muted />
+      <video className='video-bg' src='/videos/lasers.mp4' autoPlay loop muted />
       <p>
         Dance Move: {moveList[currentMoveInd]}
       </p>

@@ -27,7 +27,8 @@
 .App-link {
   color: #61dafb;
 }
-video {
+
+.video-bg {
   object-fit: cover;
   width: 100%;
   height: 100%;
