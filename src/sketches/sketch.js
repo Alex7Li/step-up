@@ -7,11 +7,13 @@ import * as ml5 from "ml5";
 import { model } from '@tensorflow/tfjs-layers';
 import { fill } from '@tensorflow/tfjs-core';
 import { setDeprecationWarningFn } from '@tensorflow/tfjs-core/dist/tensor';
+import { isPropertySignature } from 'typescript';
 
 // import "p5/lib/addons/p5.dom";
 // import './styles.css';
 
 class Sketchy extends React.Component {
+    setScore = this.props.setScore
 	// y = 0;
 	// direction = '^';
     // const canvas;
@@ -60,12 +62,7 @@ class Sketchy extends React.Component {
             this.pose = poses[0].pose;
             this.skeleton = poses[0].skeleton;
             // window.alert(JSON.stringify(this.pose))
-            this.str = this.str + JSON.stringify(this.pose) + "\n"
-            if(this.str.length < 1000000){
-                //console.log(this.str.length)
-            } else if(this.str.length < 1003000) {
-                //console.log(this.str)
-            }
+
         }
     }
 

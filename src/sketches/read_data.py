@@ -30,4 +30,3 @@ y_3 = np.concatenate((y_1, y_2), axis=0)
 # print(data.shape)
 
 from sklearn.metrics import accuracy_score
-print(accuracy_score(model.predict(x), y), True)
