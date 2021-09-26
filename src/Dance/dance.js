@@ -40,7 +40,7 @@ function Dance(props) {
         Dance Move: {moveList[currentMoveInd]}
       </p>
       <p>Your score: {score}</p>
-      {<Video setScore={setScore} score={score}/>}
+      {<Video setScore={setScore} score={score} move={moveList[currentMoveInd]}/>}
       {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
       <div className='hero-btns'>
         <Button
