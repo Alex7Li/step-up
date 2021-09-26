@@ -141,19 +141,20 @@ const trackUnsubscribed = (track) => {
         <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="200" height="200"/>
         <div className='hero-btns'>
           <Button
+            id="button-join"
             className='btns'
             buttonStyle='btn--primary'
             buttonSize='btn--large'
-            id="button-join"
             onClick={joinRoom}
           >
             Join Room <i className='far fa-play-circle' />
           </Button>
           <Button
+            id="button-leave"
             className='btns'
             buttonStyle='btn--outline'
             buttonSize='btn--large'
-            id="button-leave"
+            disabled
             onClick={leaveRoom}
           >
             Leave Room
