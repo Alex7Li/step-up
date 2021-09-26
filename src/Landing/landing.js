@@ -22,7 +22,7 @@ function Landing(props) {
   });
 
   useEffect(() => {
-    setMoveList([Moves.Floss, Moves.NaeNae, Moves.Twerk])
+    setMoveList([Moves.Floss, Moves.NaeNae, Moves.Disco])
   }, [setMoveList, setSong])
 
   const goToDancePage = (e) => {
@@ -59,6 +59,7 @@ function Landing(props) {
 
     countRef.update({
       value: Number(count)
+      
     });
   }
 

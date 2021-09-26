@@ -1,13 +1,14 @@
 import './video.scss'
-import { Moves } from '../constants.js'
 // import face from './face.jpeg'
 import  Sketchy  from "../sketches/sketch.js";
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
 import Twilio from "../Twilio/twilio"
 
-function Video() {
+function Video(props) {
   const [predictions, setPredictions] = useState([])
+  // your id is random digits
+  const [my_id, _] = useState((Math.random() + 1).toString(36).substring(7))
   const classifyImg = () => {
     // Initialize the Image Classifier method with MobileNet
     const classifier = ml5.imageClassifier('MobileNet', modelLoaded);
@@ -46,8 +47,8 @@ function Video() {
   return (
     <div>     
       {/* <img src={ face } id="image" width="400" alt="" /> */}
-      {<Twilio/>}
-      {<Sketchy/>}
+      {<Twilio setCurPage={props.setCurPage}/>}
+      {<Sketchy setScore={props.setScore} score={props.score} my_id={my_id} move={props.move}/>}
       {predictions}
     </div>
   );

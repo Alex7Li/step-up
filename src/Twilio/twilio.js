@@ -11,7 +11,7 @@ const { connect } = require('twilio-video');
 
 
 function Twilio(props) {
-
+  const setCurPage = props.setCurPage
   const TWILIO_DOMAIN = "tfvideo-9931-dev.twil.io";
   const ROOM_NAME = 'tf';
   const Video = Twilio.Video;
@@ -45,7 +45,7 @@ function Twilio(props) {
       });
     }
 
-  useEffect(() =>{
+  useEffect(() => {
     processVideo()
   })
 
@@ -125,7 +125,7 @@ const participantConnected = (participant) => {
     }
   });
   document.getElementById("pvids").appendChild(div);
-  
+  // document.body.appendChild(div);
   //new div
 }
 
@@ -157,17 +157,15 @@ const goToLandingPage = () => {
             <i class="fas fa-play"></i>
           </div>
           <ul class="fab-options">
-            <li onClick={joinRoom}>
-                <span class="fab-label" >Join Room</span>
-                <div class="fab-icon-holder">
-              
-                  <i class="fas fa-music"></i>
-                
-                </div>
+            <li>
+              <span class="fab-label" >Join Room</span>
+              <div class="fab-icon-holder" onClick={joinRoom}>
+                <i class="fas fa-music"></i>
+              </div>
             </li>
             <li>
               <span class="fab-label">Disconnect</span>
-              <div class="fab-icon-holder">
+              <div class="fab-icon-holder" onClick={leaveRoom}>
                 <i class="fas fa-phone-slash"></i>
               </div>
             </li>
@@ -200,8 +198,6 @@ const goToLandingPage = () => {
           </Button>
         </div>  */}
         <div id='pvids'></div>
-        {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
-        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
       </div>
     </div>
   );
