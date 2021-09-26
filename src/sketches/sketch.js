@@ -62,9 +62,9 @@ class Sketchy extends React.Component {
             // window.alert(JSON.stringify(this.pose))
             this.str = this.str + JSON.stringify(this.pose) + "\n"
             if(this.str.length < 1000000){
-                console.log(this.str.length)
+                //console.log(this.str.length)
             } else if(this.str.length < 1003000) {
-                console.log(this.str)
+                //console.log(this.str)
             }
         }
     }

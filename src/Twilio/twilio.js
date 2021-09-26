@@ -110,8 +110,8 @@ const participantConnected = (participant) => {
   console.log(`Participant ${participant.identity} connected'`);
 
   const div = document.createElement('div');
-  const p = document.createElement('p');
   div.id = participant.sid;
+  div.className = "participant-video";
 
   participant.on('trackSubscribed', track => trackSubscribed(div, track));
   participant.on('trackUnsubscribed', trackUnsubscribed);
@@ -121,8 +121,8 @@ const participantConnected = (participant) => {
       trackSubscribed(div, publication.track);
     }
   });
-  document.body.appendChild(div);
-  document.body.appendChild(p);
+  document.getElementById("pvids").appendChild(div);
+  
   //new div
 }
 
@@ -143,7 +143,7 @@ const trackUnsubscribed = (track) => {
       {/* <p>Twilio</p> */}
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
-        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="200" height="200"/>
+        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="1" height="1"/>
         <div className='hero-btns'>
           <Button
             className='btns'
@@ -164,6 +164,7 @@ const trackUnsubscribed = (track) => {
             Leave Room
           </Button>
         </div> 
+        <div id='pvids'></div>
         {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
         <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
       </div>
