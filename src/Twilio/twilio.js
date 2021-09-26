@@ -42,7 +42,7 @@ function Twilio(props) {
       });
     }
 
-  useEffect(() =>{
+  useEffect(() => {
     processVideo()
   })
 
