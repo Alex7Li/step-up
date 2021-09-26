@@ -8,6 +8,7 @@ import { model } from '@tensorflow/tfjs-layers';
 import { fill } from '@tensorflow/tfjs-core';
 import { setDeprecationWarningFn } from '@tensorflow/tfjs-core/dist/tensor';
 import { isPropertySignature } from 'typescript';
+import firebase from '../util/firebase'
 
 // import "p5/lib/addons/p5.dom";
 // import './styles.css';
@@ -54,6 +55,28 @@ class Sketchy extends React.Component {
         console.log("poseNet Loaded!");
     }
 
+    updateCounts = () => {
+        console.log("In update log")
+        const countRef = firebase.database().ref("Metrics")
+
+        let count = 0;
+        countRef.on("value", (snapshot) => {
+        const metrics = snapshot.val();
+        console.log(metrics)
+        for ( let value in metrics) {
+            console.log("value: " + value)
+            console.log("metrics[value]: " + metrics[value])
+            count = Number(metrics[value]) + 1;
+            console.log("metrics[value]+1: " + count);
+        }
+    });
+
+
+    countRef.update({
+      value: Number(count)
+      
+    });
+  }
     poseNetOn = (poses) => {
         // console.log(poses);
         if(poses.length > 0){
