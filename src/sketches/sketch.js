@@ -43,28 +43,16 @@ class Sketchy extends React.Component {
         console.log("poseNet Loaded!");
     }
 
-    updateCounts = () => {
+    updateScore = (newScore) => {
         console.log("In update log")
         const countRef = firebase.database().ref("Metrics")
+        const id = this.props.my_id
 
-        let count = 0;
-        countRef.on("value", (snapshot) => {
-        const metrics = snapshot.val();
-        console.log(metrics)
-        for ( let value in metrics) {
-            console.log("value: " + value)
-            console.log("metrics[value]: " + metrics[value])
-            count = Number(metrics[value]) + 1;
-            console.log("metrics[value]+1: " + count);
-        }
-    });
+        countRef.update({
+            id: Number(newScore)
+        });
+    }
 
-
-    countRef.update({
-      value: Number(count)
-      
-    });
-  }
     poseNetOn = (poses) => {
         // console.log(poses);
         if(poses.length > 0){
@@ -72,7 +60,9 @@ class Sketchy extends React.Component {
             this.pose = poses[0].pose;
             this.skeleton = poses[0].skeleton;
             // window.alert(JSON.stringify(this.pose))
-            this.props.setScore(this.props.score + 1)
+            const newScore = this.props.score + 1
+            this.props.setScore(newScore)
+            this.updateScore(newScore)
         }
     }
 
