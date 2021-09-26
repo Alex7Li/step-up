@@ -2,7 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import Twilio from "../Twilio/twilio"
 import Sketch from 'react-p5';
-import * as p5 from 'p5'
+// import * as p5 from 'p5'
 import * as ml5 from "ml5";
 // import "p5/lib/addons/p5.dom";
 // import './styles.css';
@@ -17,24 +17,24 @@ class Sketchy extends React.Component {
         this.modelURL = this.URL + "model.json"
         this.metadataURL = this.URL + "metadata.json";
         this.classifier = ml5.poseNet(this.modelURL, this.modelReady);
-        this.classifier.on('pose', this.poseNetOn);
     } 
 	setup = (p5, parentRef) => {
-		p5.createCanvas(520, 360);
-        this.video = p5.createCapture(Twilio.Video);
-        // this.video = p5.createCapture(p5.VIDEO);
+		p5.createCanvas(520, 360).parent(parentRef);
+        // this.video = p5.createCapture(Twilio.Video);
+        this.video = p5.createCapture(p5.VIDEO);
 
         this.video.hide();
 
+        this.classifier.on('pose', this.poseNetOn);
+
         // this.video.size(200,200);
 	};
-
-    poseNetOn =() => {
-        console.log("poseNet is on!");
-    }
-    
     modelReady = () => {
-        console.log("classifier is working!");
+        console.log("poseNet Loaded!");
+    }
+
+    poseNetOn =(stream) => {
+        console.log("poseNet Listening!");
     }
 
 	draw = (p5) => {
