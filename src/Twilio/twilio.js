@@ -24,6 +24,9 @@ function Twilio(props) {
     // Preview screen
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(vid => {
+        if (vid == null) {
+          window.location.reload(false);
+        }
         const video = videoRef.current;
         video.srcObject = vid;
         // video.hide();
@@ -107,6 +110,7 @@ const participantConnected = (participant) => {
   console.log(`Participant ${participant.identity} connected'`);
 
   const div = document.createElement('div');
+  const p = document.createElement('p');
   div.id = participant.sid;
 
   participant.on('trackSubscribed', track => trackSubscribed(div, track));
@@ -118,6 +122,7 @@ const participantConnected = (participant) => {
     }
   });
   document.body.appendChild(div);
+  document.body.appendChild(p);
   //new div
 }
 
@@ -141,20 +146,19 @@ const trackUnsubscribed = (track) => {
         <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="200" height="200"/>
         <div className='hero-btns'>
           <Button
-            id="button-join"
             className='btns'
             buttonStyle='btn--primary'
             buttonSize='btn--large'
+            id="button-join"
             onClick={joinRoom}
           >
             Join Room <i className='far fa-play-circle' />
           </Button>
           <Button
-            id="button-leave"
             className='btns'
             buttonStyle='btn--outline'
             buttonSize='btn--large'
-            disabled
+            id="button-leave"
             onClick={leaveRoom}
           >
             Leave Room
