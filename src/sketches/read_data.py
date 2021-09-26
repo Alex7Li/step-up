@@ -48,3 +48,7 @@ print((correct/x_3.shape[0]))
 # print(y_3)
 # data = np.concatenate((x_3, y_3), axis=1)
 # print(data.shape)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 428c692b87ffd300c62cbe23285e784f83bc3925
