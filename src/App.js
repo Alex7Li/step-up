@@ -5,6 +5,8 @@ import DancePage from './Dance/dance.js'
 // import * as p5 from './p5.js'
 import { Pages, Moves } from './constants.js'
 import pyrite from './Songs/Lemaitre - Iron Pyrite.mp3'
+import { Button } from './Landing/Button'
+import Navbar from './Landing/Navbar';
 
 // import P5Wrapper from 'react-p5-wrapper';
 // import sketch from './Video/video.js';
