@@ -90,9 +90,9 @@ class Sketchy extends React.Component {
               let a = this.skeleton[i][0];
               let b = this.skeleton[i][1];
               p5.strokeWeight(6);
-              p5.stroke(255,0,0);
+              p5.stroke(0,0,255);
         
-              p5.line(a.position.x - 50, a.position.y - 40, b.position.x-50, b.position.y - 40);
+              p5.line(a.position.x - 60, a.position.y - 40, b.position.x-50, b.position.y - 40);
             }
             console.log("pose exists!")
             for (let i = 0; i < this.pose.keypoints.length; i++) {
