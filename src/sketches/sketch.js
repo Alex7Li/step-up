@@ -3,9 +3,10 @@ import React from 'react';
 import Twilio from "../Twilio/twilio"
 import Sketch from 'react-p5';
 import * as p5 from 'p5'
-import * as ml5 from "ml5";
+import { ml5 } from 'ml5';
 import { model } from '@tensorflow/tfjs-layers';
 import { fill } from '@tensorflow/tfjs-core';
+
 // import "p5/lib/addons/p5.dom";
 // import './styles.css';
 
@@ -16,9 +17,9 @@ class Sketchy extends React.Component {
     // let video;
     pose = null;
     skeleton = null;
-    state = 'waiting'
+    state = 'waiting';
     targetLabel = null;
-
+    
     // ketPressed(){
     //     this.targetLabel = p5.keyCode;
     //     console.log(this.targetLabel)
@@ -45,10 +46,7 @@ class Sketchy extends React.Component {
         //     task: 'classification'
         // }
 
-        // this.brain = ml5.neuralNetwork(options);
-        // this.classifier.on('pose', this.poseNetOn);
-
-        // this.video.size(200,200);
+        this.flossNet = ml5.KNNClassifier()
 	};
     modelReady = () => {
         console.log("poseNet Loaded!");
