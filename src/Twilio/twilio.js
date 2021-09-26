@@ -24,6 +24,7 @@ function Twilio(props) {
       .then(vid => {
         const video = videoRef.current;
         video.srcObject = vid;
+        // video.hide();
         // video.srcObject = Sketchy.video;  // from abu's stuff
         const intervalID = setInterval(async () => {
           try {

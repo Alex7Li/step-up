@@ -27,6 +27,13 @@
 .App-link {
   color: #61dafb;
 }
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
 
 @keyframes App-logo-spin {
   from {

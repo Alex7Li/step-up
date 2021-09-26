@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { Pages } from '../constants.js';
 import Video from '../Video/video.js';
-import './dance.scss';
+import '../Landing/landing.css';
+import { Button } from '../Landing/Button'
 
 function Dance(props) {
   const setCurPage = props.setCurPage
@@ -32,12 +33,24 @@ function Dance(props) {
   });
 
   return (
-    <div>
+    <div className='hero-container'>
+      <video src='/videos/lasers.mp4' autoPlay loop muted />
       <p>
         Dance Move: {moveList[currentMoveInd]}
       </p>
       {<Video/>}
-      <input type="button" value="go back" onClick={goToLandingPage}/>
+      {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
+      <div className='hero-btns'>
+        <Button
+          className='btns'
+          buttonStyle='btn--outline'
+          buttonSize='btn--large'
+          value="go back"
+          onClick={goToLandingPage}
+        >
+          Go Back
+        </Button>
+      </div>
     </div>
   );
 }

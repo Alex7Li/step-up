@@ -22,6 +22,7 @@ export const Button = ({
   children,
   type,
   onClick,
+  value,
   buttonStyle,
   buttonSize
 }) => {
@@ -44,6 +45,7 @@ export const Button = ({
     <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
+        value={value}
         type={type}
       >
         {children}
