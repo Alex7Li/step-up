@@ -3,9 +3,10 @@ import React from 'react';
 import Twilio from "../Twilio/twilio"
 import Sketch from 'react-p5';
 import * as p5 from 'p5'
-import { ml5 } from 'ml5';
+import * as ml5 from "ml5";
 import { model } from '@tensorflow/tfjs-layers';
 import { fill } from '@tensorflow/tfjs-core';
+import { setDeprecationWarningFn } from '@tensorflow/tfjs-core/dist/tensor';
 
 // import "p5/lib/addons/p5.dom";
 // import './styles.css';
@@ -19,7 +20,7 @@ class Sketchy extends React.Component {
     skeleton = null;
     state = 'waiting';
     targetLabel = null;
-    
+    str = ""
     // ketPressed(){
     //     this.targetLabel = p5.keyCode;
     //     console.log(this.targetLabel)
@@ -40,13 +41,13 @@ class Sketchy extends React.Component {
         this.video.hide();
         this.poseNet = ml5.poseNet(this.video, this.modelReady);
         this.poseNet.on('pose', this.poseNetOn)
-        // let options = {
-        //     input: 34,
-        //     output: 2,
-        //     task: 'classification'
-        // }
+        let options = {
+            input: 34,
+            output: 2,
+            task: 'classification'
+        }
 
-        this.flossNet = ml5.KNNClassifier()
+        // this.flossNet = ml5.neuralNetwork(options)
 	};
     modelReady = () => {
         console.log("poseNet Loaded!");
@@ -55,9 +56,16 @@ class Sketchy extends React.Component {
     poseNetOn = (poses) => {
         // console.log(poses);
         if(poses.length > 0){
-            // console.log('got pose')
+            // const fs = require('fs')
             this.pose = poses[0].pose;
             this.skeleton = poses[0].skeleton;
+            // window.alert(JSON.stringify(this.pose))
+            this.str = this.str + JSON.stringify(this.pose) + "\n"
+            if(this.str.length < 1000000){
+                console.log(this.str.length)
+            } else if(this.str.length < 1003000) {
+                console.log(this.str)
+            }
         }
     }
 
@@ -92,7 +100,7 @@ class Sketchy extends React.Component {
         
               p5.line(a.position.x - 60, a.position.y - 40, b.position.x-50, b.position.y - 40);
             }
-            console.log("pose exists!")
+            // console.log("pose exists!")
             for (let i = 0; i < this.pose.keypoints.length; i++) {
               let x = this.pose.keypoints[i].position.x;
               let y = this.pose.keypoints[i].position.y;
