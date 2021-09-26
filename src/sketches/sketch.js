@@ -1,20 +1,3 @@
-// let video
-
-// function setup() {
-//     createCanvas(320, 260);
-//     //   create video
-//     video = createCapture(VIDEO);
-//     video.size(320,260);
-//     video.hide();
-// }
-
-// // STEP 2: CLASSIFY
-
-// function draw() {
-//     background(0);
-//     image(video, 0,0);
-
-// }
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import Twilio from "../Twilio/twilio"
@@ -30,22 +13,34 @@ class Sketchy extends React.Component {
     // const canvas;
     // let video;
     preload = (p5) => {
-        this.classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/3iU5gtESu/');
+        this.classifier = ml5.poseNet('https://teachablemachine.withgoogle.com/models/3iU5gtESu/', this.modelReady);
+        this.classifier.on('pose', this.poseNetOn);
     }
 	setup = (p5, parentRef) => {
-		p5.createCanvas(640, 360).parent(parentRef);
+		p5.createCanvas(520, 360);
         this.video = p5.createCapture(Twilio.Video);
-        // const sketch  = new p5();
-        // sketch.createCanvas(200, 200)
+
         this.video.hide();
 
         // this.video.size(200,200);
 	};
 
+    poseNetOn =() => {
+        window.alert("poseNet is on!");
+    }
+    
+    modelReady = () => {
+        window.alert("classifier is working!");
+    }
+
 	draw = (p5) => {
 		p5.background(0);
-        p5.tint(255,50,150);
-        p5.image(this.video, 0, 0);
+        p5.tint(100,50,150);
+        p5.translate(this.video.width, 0);
+        //then scale it by -1 in the x-axis
+        //to flip the image
+        p5.scale(-1, 1);
+        p5.image(this.video, 0, 0, p5.width, p5.height);
         
 	};
 
