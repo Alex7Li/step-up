@@ -8,6 +8,8 @@ import Twilio from "../Twilio/twilio"
 
 function Video(props) {
   const [predictions, setPredictions] = useState([])
+  // your id is random digits
+  const [my_id, _] = useState((Math.random() + 1).toString(36).substring(7))
   const classifyImg = () => {
     // Initialize the Image Classifier method with MobileNet
     const classifier = ml5.imageClassifier('MobileNet', modelLoaded);
@@ -47,7 +49,7 @@ function Video(props) {
     <div>     
       {/* <img src={ face } id="image" width="400" alt="" /> */}
       {<Twilio/>}
-      {<Sketchy setScore={props.setScore} score={props.score}/>}
+      {<Sketchy setScore={props.setScore} score={props.score} my_id={my_id} move={props.move}/>}
       {predictions}
     </div>
   );
