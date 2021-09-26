@@ -12,6 +12,7 @@ function Dance(props) {
   const [play, { stop }] = useSound(props.song)
   const [score, setScore] = useState(0)
   const [otherScore, setOtherScore] = useState(0)
+  const [movesLeft, setMovesLeft] = useState(3)
 
   useEffect(() => {
     const countRef = firebase.database().ref("Metrics")
@@ -47,7 +48,12 @@ function Dance(props) {
   useEffect(() => {
     const interval = setInterval(() => {
      setCurrentMoveInd((currentMoveInd + 1) % moveList.length)
-    }, 3000);
+     if (movesLeft == 0) {
+       goToLandingPage()
+     } else {
+      setMovesLeft(movesLeft - 1)
+     }
+    }, 10000);
     return () => clearInterval(interval);
   });
 
@@ -59,6 +65,7 @@ function Dance(props) {
       </p>
       <p>Your score: {score}</p>
       <p>Opponent score: {otherScore}</p>
+      <p>Moves Left: {movesLeft}</p>
       {<Video setScore={setScore} score={score} move={moveList[currentMoveInd]}/>}
       {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
       <div className='hero-btns'>

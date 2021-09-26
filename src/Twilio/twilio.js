@@ -28,6 +28,9 @@ function Twilio(props) {
           window.location.reload(false);
         }
         const video = videoRef.current;
+        if (video == null) {
+          window.location.reload(false);
+        }
         video.srcObject = vid;
         // video.hide();
         // video.srcObject = Sketchy.video;  // from abu's stuff
