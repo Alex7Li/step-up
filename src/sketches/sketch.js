@@ -2,7 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import Twilio from "../Twilio/twilio"
 import Sketch from 'react-p5';
-// import * as p5 from 'p5'
+import * as p5 from 'p5'
 import * as ml5 from "ml5";
 import { model } from '@tensorflow/tfjs-layers';
 import { fill } from '@tensorflow/tfjs-core';
@@ -15,11 +15,21 @@ class Sketchy extends React.Component {
     // const canvas;
     // let video;
     pose = null;
+    skeleton = null;
+    state = 'waiting'
+    targetLabel = null;
+
+    // ketPressed(){
+    //     this.targetLabel = p5.keyCode;
+    //     console.log(this.targetLabel)
+    //     setTimeout( function () {
+    //         console.log('collecting')
+    //         this.state = 'collecting';
+    //     }, 3000 );
+        
+    // }
     preload = (p5) => {
-        // this.URL = "../Model/my-pose-model/";
-        // this.modelURL = this.URL + "model.json"
-        // this.metadataURL = this.URL + "metadata.json";
-        // this.classifier = ml5.poseNet(this.modelURL, this.modelReady);
+
     } 
 	setup = (p5, parentRef) => {
         // this.video = p5.createCapture(Twilio.Video);
@@ -49,6 +59,7 @@ class Sketchy extends React.Component {
         if(poses.length > 0){
             // console.log('got pose')
             this.pose = poses[0].pose;
+            this.skeleton = poses[0].skeleton;
         }
     }
 
@@ -75,21 +86,22 @@ class Sketchy extends React.Component {
         // }
         // console.log(JSON.stringify(this.pose))
         if (this.pose) {
-            // for (let i = 0; i < skeleton.length; i++) {
-            //   let a = skeleton[i][0];
-            //   let b = skeleton[i][1];
-            //   strokeWeight(2);
-            //   stroke(0);
+            for (let i = 0; i < this.skeleton.length; i++) {
+              let a = this.skeleton[i][0];
+              let b = this.skeleton[i][1];
+              p5.strokeWeight(6);
+              p5.stroke(255,0,0);
         
-            //   line(a.position.x, a.position.y, b.position.x, b.position.y);
-            // }
+              p5.line(a.position.x - 50, a.position.y - 40, b.position.x-50, b.position.y - 40);
+            }
             console.log("pose exists!")
             for (let i = 0; i < this.pose.keypoints.length; i++) {
               let x = this.pose.keypoints[i].position.x;
               let y = this.pose.keypoints[i].position.y;
               p5.fill(255,255,255);
+              p5.strokeWeight(2);
               p5.stroke(255,0,0);
-              p5.ellipse(x - 60, y, 10);
+              p5.ellipse(x - 60, y - 40, 10);
             // //   console.log(x,y)
             }
           }
@@ -100,7 +112,7 @@ class Sketchy extends React.Component {
 		return (
 			<div className="App">
 				<h1>react-p5</h1>
-				<Sketch setup={this.setup} draw={this.draw} preload={this.preload} />
+				<Sketch setup={this.setup} draw={this.draw}/>
 			</div>
 		);
 	}
