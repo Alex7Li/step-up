@@ -1,7 +1,7 @@
 exports.handler = function(context, event, callback) {
     const TWILIO_ACCOUNT_SID = "AC008448861bd1396c2fc2066f8bba60d5";
-    const TWILIO_API_KEY = "SK16efa9e86dfba9cd197d3892d17c73c5";
-    const TWILIO_API_SECRET = "p6mA6IKL6GSxHP1olcRQ18Ffj4tamUiR";
+    const TWILIO_API_KEY = "SK46d1cb126dc803642730a1841b088c20";
+    const TWILIO_API_SECRET = "Ilp8VhLDR0KniLQJG0CqZIPB4KLRPCrD";
     const ACCESS_TOKEN_IDENTITY =
       Math.random()
         .toString(36)

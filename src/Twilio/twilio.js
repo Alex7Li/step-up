@@ -16,8 +16,8 @@ function Twilio(props) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const minConfidence = 0.2;
-  const VIDEO_WIDTH = 320;
-  const VIDEO_HEIGHT = 240;
+  const VIDEO_WIDTH = 200;
+  const VIDEO_HEIGHT = 200;
   const frameRate = 3;
 
   const processVideo = () => {
@@ -74,7 +74,6 @@ function Twilio(props) {
   // buttons
   const joinRoomButton = document.getElementById("button-join");
   const leaveRoomButton = document.getElementById("button-leave");
-  const site = `https://${TWILIO_DOMAIN}/video-token`;
 
   const joinRoom = () => {
     axios.get(`https://${TWILIO_DOMAIN}/video-token`).then(async (body) => {
@@ -92,16 +91,16 @@ function Twilio(props) {
         room.once("disconnected", (error) =>
           room.participants.forEach(participantDisconnected)
         );
-        joinRoomButton.disabled = true;
-        leaveRoomButton.disabled = false;
+        // joinRoomButton.disabled = true;
+        // leaveRoomButton.disabled = false;
       });
     });
   };
   const leaveRoom = () => {
     videoRoom.disconnect();
     console.log(`Disconnected from Room ${videoRoom.name}`);
-    joinRoomButton.disabled = false;
-    leaveRoomButton.disabled = true;
+    // joinRoomButton.disabled = false;
+    // leaveRoomButton.disabled = true;
   };
 
 const participantConnected = (participant) => {
@@ -139,8 +138,7 @@ const trackUnsubscribed = (track) => {
       {/* <p>Twilio</p> */}
       <div id="room-controls">
         <canvas id="canvas" ref={canvasRef}></canvas>
-        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240"/>
-        {/* onLoadedData={processVideo}></video>*/}
+        <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="200" height="200"/>
         <div className='hero-btns'>
           <Button
             className='btns'
