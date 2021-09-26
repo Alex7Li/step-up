@@ -13,7 +13,6 @@ import { isPropertySignature } from 'typescript';
 // import './styles.css';
 
 class Sketchy extends React.Component {
-    setScore = this.props.setScore
 	// y = 0;
 	// direction = '^';
     // const canvas;
@@ -62,7 +61,7 @@ class Sketchy extends React.Component {
             this.pose = poses[0].pose;
             this.skeleton = poses[0].skeleton;
             // window.alert(JSON.stringify(this.pose))
-
+            this.props.setScore(this.props.score + 1)
         }
     }
 
