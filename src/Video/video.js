@@ -4,7 +4,7 @@ import face from './face.jpeg'
 import  Sketchy  from "../sketches/sketch.js";
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
-
+import Twilio from "../Twilio/twilio"
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -46,6 +46,7 @@ function Video() {
   return (
     <div>     
       <img src={ face } id="image" width="400" alt="" />
+      {<Twilio/>}
       {<Sketchy/>}
       {predictions}
     </div>
