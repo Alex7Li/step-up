@@ -3,8 +3,8 @@ import numpy as np
 from sklearn.linear_model import LinearRegression as lr
 
 print("read input")
-filename1 = "cancan_left.json"
-filename2 = "cancan_right.json"
+filename1 = "floss_left.json"
+filename2 = "floss_right.json"
 def read_file(name):
   mat = []
   with open(name) as f:
@@ -36,19 +36,7 @@ model.fit(x_3, y_3)
 print((model.coef_))
 print(model.intercept_)
 
-correct  = 0
-preds = model.predict(x_3)
+from sklearn.metrics import accuracy_score as acc
 
-for y_, y in zip(preds, y_3):
-  if y_ == y:
-    correct += 1
+print(acc(np.round(model.predict(x_2)), y_2, normalize = True))
 
-print((correct/x_3.shape[0]))
-# print(model.predict(x_1))
-# print(y_3)
-# data = np.concatenate((x_3, y_3), axis=1)
-# print(data.shape)
-<<<<<<< HEAD
-=======
-
->>>>>>> 428c692b87ffd300c62cbe23285e784f83bc3925
