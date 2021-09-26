@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import  Sketchy  from "../sketches/sketch.js";
+import { Button } from '../Landing/Button'
+import '../Landing/landing.css';
 
 const posenet = require('@tensorflow-models/posenet');
 const axios = require('axios').default;
@@ -135,8 +137,28 @@ const trackUnsubscribed = (track) => {
         <canvas id="canvas" ref={canvasRef}></canvas>
         <video id="video" ref={videoRef} autoPlay muted={true} position="relative" width="320" height="240"/>
         {/* onLoadedData={processVideo}></video>*/}
-        <button id="button-join" onClick={joinRoom}>Join Room</button>
-        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button>
+        <div className='hero-btns'>
+          <Button
+            className='btns'
+            buttonStyle='btn--primary'
+            buttonSize='btn--large'
+            id="button-join"
+            onClick={joinRoom}
+          >
+            Join Room <i className='far fa-play-circle' />
+          </Button>
+          <Button
+            className='btns'
+            buttonStyle='btn--outline'
+            buttonSize='btn--large'
+            id="button-leave"
+            onClick={leaveRoom}
+          >
+            Leave Room
+          </Button>
+        </div> 
+        {/* <button id="button-join" onClick={joinRoom}>Join Room</button>
+        <button id="button-leave" disabled onClick={leaveRoom}>Leave Room</button> */}
       </div>
     </div>
   );

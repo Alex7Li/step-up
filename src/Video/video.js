@@ -1,14 +1,10 @@
 import './video.scss'
 import { Moves } from '../constants.js'
-import face from './face.jpeg'
+// import face from './face.jpeg'
 import  Sketchy  from "../sketches/sketch.js";
-import TM from '../sketches/tm'
-
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
-
 import Twilio from "../Twilio/twilio"
-
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -20,15 +16,15 @@ function Video() {
       console.log('Model Loaded!');
     }
     // Put the image to classify inside a variable
-    const image = document.getElementById('image');
-    // Make a prediction with a selected image
-    classifier.predict(image, 5, function (err, results) {
-      return results
-    }).then((results) => {
-        const classes = results.map(x=>x.className)
-        // Set the predictions in the state
-        setPredictions(classes)
-      })
+    // const image = document.getElementById('image');
+    // // Make a prediction with a selected image
+    // classifier.predict(image, 5, function (err, results) {
+    //   return results
+    // }).then((results) => {
+    //     const classes = results.map(x=>x.className)
+    //     // Set the predictions in the state
+    //     setPredictions(classes)
+    //   })
   }
 
   // once the component is mounted, start the classification
@@ -49,10 +45,9 @@ function Video() {
 
   return (
     <div>     
-      <img src={ face } id="image" width="400" alt="" />
+      {/* <img src={ face } id="image" width="400" alt="" /> */}
       {<Twilio/>}
       {<Sketchy/>}
-      {/* {<TM/>} */}
       {predictions}
     </div>
   );
