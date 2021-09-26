@@ -13,12 +13,16 @@ class Sketchy extends React.Component {
     // const canvas;
     // let video;
     preload = (p5) => {
-        this.classifier = ml5.poseNet('https://teachablemachine.withgoogle.com/models/3iU5gtESu/', this.modelReady);
+        this.URL = "../Model/my-pose-model";
+        this.modelURL = this.URL + "model.json"
+        this.metadataURL = this.URL + "metadata.json";
+        this.classifier = ml5.poseNet(this.modelURL, this.modelReady);
         this.classifier.on('pose', this.poseNetOn);
-    }
+    } 
 	setup = (p5, parentRef) => {
 		p5.createCanvas(520, 360);
         this.video = p5.createCapture(Twilio.Video);
+        // this.video = p5.createCapture(p5.VIDEO);
 
         this.video.hide();
 
@@ -26,11 +30,11 @@ class Sketchy extends React.Component {
 	};
 
     poseNetOn =() => {
-        window.alert("poseNet is on!");
+        console.log("poseNet is on!");
     }
     
     modelReady = () => {
-        window.alert("classifier is working!");
+        console.log("classifier is working!");
     }
 
 	draw = (p5) => {

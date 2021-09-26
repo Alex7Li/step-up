@@ -1,4 +1,7 @@
-const URL = "./my_model/";
+// import * as tf from '@tensorflow/tfjs';
+import * as tmPose from '@teachablemachine/pose';
+
+const URL = "../Model/my-pose-model";
 let model, webcam, ctx, labelContainer, maxPredictions;
 
 async function init() {
@@ -67,3 +70,4 @@ function drawPose(pose) {
         }
     }
 }
+

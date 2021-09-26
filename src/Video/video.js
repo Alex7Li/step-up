@@ -2,9 +2,13 @@ import './video.scss'
 import { Moves } from '../constants.js'
 import face from './face.jpeg'
 import  Sketchy  from "../sketches/sketch.js";
+import TM from '../sketches/tm'
+
 import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
+
 import Twilio from "../Twilio/twilio"
+
 
 function Video() {
   const [predictions, setPredictions] = useState([])
@@ -48,6 +52,7 @@ function Video() {
       <img src={ face } id="image" width="400" alt="" />
       {<Twilio/>}
       {<Sketchy/>}
+      {/* {<TM/>} */}
       {predictions}
     </div>
   );
