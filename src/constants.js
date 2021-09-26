@@ -63,4 +63,4 @@ const floss_w =
 const floss_b = -0.012266699345497845;
 
 
-export { Pages, Moves, Songs, getSongFromName }
+export { Pages, Moves, Songs, getSongFromName, disco_w, disco_b, cancan_w, cancan_b, floss_w, floss_b }
