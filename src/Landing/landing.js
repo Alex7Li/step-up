@@ -24,15 +24,14 @@ function Landing(props) {
     setMoveList([Moves.Floss, Moves.NaeNae, Moves.Twerk])
   }, [setMoveList, setSong])
 
-  const goToDancePage = () => {
+  const goToDancePage = (e) => {
     play({ id: 'snare' })
     setCurPage(Pages.DancePage)
-  }
-
-  const selectSong = (e) => {
     const songName = e.target.value;
     setSong(getSongFromName(songName))
+    console.log(songName)
   }
+
   return (
   //   <div>
   //     <h2>
@@ -52,7 +51,7 @@ function Landing(props) {
   <div className='hero-container'>
       <video src='/videos/video-2.mp4' autoPlay loop muted />
       <h1>Twerk Out to Work Out!</h1>
-      <p>Select a song to play:</p>
+      <p>Select a song to dance:</p>
       <div className='hero-btns'>
         <Button
           className='btns'

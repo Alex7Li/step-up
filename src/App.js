@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <video src='/videos/video-1.mp4' autoPlay loop muted /> */}
       <header></header>
       {curPage === Pages.LandingPage && <Landing setCurPage={setCurPage} setMoveList={setMoveList} setSong={setSong}/>}
       {curPage === Pages.DancePage && <DancePage setCurPage={setCurPage} moveList={moveList}song={song}/>}
