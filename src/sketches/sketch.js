@@ -14,7 +14,7 @@ class Sketchy extends React.Component {
 	// direction = '^';
     // const canvas;
     // let video;
-    pose;
+    pose = null;
     preload = (p5) => {
         // this.URL = "../Model/my-pose-model/";
         // this.modelURL = this.URL + "model.json"
@@ -22,10 +22,10 @@ class Sketchy extends React.Component {
         // this.classifier = ml5.poseNet(this.modelURL, this.modelReady);
     } 
 	setup = (p5, parentRef) => {
-		p5.createCanvas(520, 360).parent(parentRef);
         // this.video = p5.createCapture(Twilio.Video);
+        p5.createCanvas(500, 360).parent(parentRef);
         this.video = p5.createCapture(p5.VIDEO);
-
+        
         this.video.hide();
         this.poseNet = ml5.poseNet(this.video, this.modelReady);
         this.poseNet.on('pose', this.poseNetOn)
@@ -47,17 +47,19 @@ class Sketchy extends React.Component {
 	draw = (p5) => {
 		p5.background(0);
         p5.tint(170,170,255);
-        p5.translate(this.video.width, 0);
+        p5.translate(p5.width, 0);
         //then scale it by -1 in the x-axis
         //to flip the image
         p5.scale(-1, 1);
         p5.image(this.video, 0, 0, p5.width, p5.height);
         
         if(this.pose){
-            for(let i = 0; i<17; i++){
-                p5.fill(255,0,0);
-                p5.ellipse(this.pose.keypoints[i].position['x'], this.pose.keypoints[i].position['y'], 40);
-            }
+            // for(let i = 0; i<17; i++){
+            //     p5.fill(255,0,0);
+            //     p5.ellipse(this.pose.keypoints[i].position.x, this.pose.keypoints[i].position.y, 40);
+            // }
+            p5.fill(255,0,0);
+            p5.ellipse(this.pose.nose.x, this.pose.nose.y, 64);
         }
         
 	};
