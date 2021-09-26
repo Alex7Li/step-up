@@ -40,6 +40,35 @@ function Dance(props) {
       </p>
       {<Video/>}
       {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
+      {/* <div class="fab-container">
+        <div class="fab fab-icon-holder">
+          <i class="fas fa-play"></i>
+        </div>
+        <ul class="fab-options">
+          <li>
+            <button id="button-join" onClick={joinRoom} >
+              <span class="fab-label">Join Room</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-music"></i>
+              </div>
+              </button>
+          </li>
+          <li>
+            <span class="fab-label">Disconnect</span>
+            <div class="fab-icon-holder">
+              <i class="fas fa-sign-out"></i>
+            </div>
+          </li>
+          <li>
+            <button value="go back" onClick={goToLandingPage}>
+              <span class="fab-label">Go Back</span>
+              <div class="fab-icon-holder">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
       <div className='hero-btns'>
         <Button
           className='btns'
@@ -50,7 +79,7 @@ function Dance(props) {
         >
           Go Back
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
