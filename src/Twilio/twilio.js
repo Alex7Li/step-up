@@ -73,7 +73,7 @@ function Twilio(props) {
   const leaveRoomButton = document.getElementById("button-leave");
   const site = `https://${TWILIO_DOMAIN}/video-token`;
   const joinRoom = () => {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1LTE2MzI2MTAxMzEiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJ5czF0dGlod3NzNDdtd2FpbHZkN2oiLCJ2aWRlbyI6eyJyb29tIjoidGYifX0sImlhdCI6MTYzMjYxMDEzMSwiZXhwIjoxNjMyNjEzNzMxLCJpc3MiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1Iiwic3ViIjoiQUMwMDg0NDg4NjFiZDEzOTZjMmZjMjA2NmY4YmJhNjBkNSJ9.wymIMb-XSVdGsaT0TPUliAHMzpBwyAs5ysgf2Kys9J0";
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzE2ZWZhOWU4NmRmYmE5Y2QxOTdkMzg5MmQxN2M3M2M1LTE2MzI2MTg4OTQiLCJncmFudHMiOnsiaWRlbnRpdHkiOiI5a25qOXNtODd6dWptc25lOWswd3JpIiwidmlkZW8iOnsicm9vbSI6InRmIn19LCJpYXQiOjE2MzI2MTg4OTQsImV4cCI6MTYzMjYyMjQ5NCwiaXNzIjoiU0sxNmVmYTllODZkZmJhOWNkMTk3ZDM4OTJkMTdjNzNjNSIsInN1YiI6IkFDMDA4NDQ4ODYxYmQxMzk2YzJmYzIwNjZmOGJiYTYwZDUifQ.b7isol3HmcXpUctKjn-LqkMXDKFi77RQnxLI2XzuuhE";
 
       connect(token, { name: ROOM_NAME }).then((room) => {
         console.log(`Connected to Room ${room.name}`);
