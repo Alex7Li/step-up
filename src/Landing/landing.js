@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pages, Moves, Songs, getSongFromName } from '../constants.js'
 import { useEffect } from 'react';
 import useSound from 'use-sound';
@@ -6,6 +6,7 @@ import drum_sprites from '../Songs/drum_sprites.mp3'
 import { Button } from './Button'
 import '../App.css';
 import './landing.css';
+import firebase from '../util/firebase'
 
 function Landing(props) {
   const setCurPage = props.setCurPage
@@ -31,6 +32,51 @@ function Landing(props) {
     setSong(getSongFromName(songName))
     console.log(songName)
   }
+
+  const [value, setTitle] = useState('');
+  const [metricsList, setMetricsList] = useState('');
+
+  const handleOnChange = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const updateCounts = () => {
+    console.log("In update log")
+    const countRef = firebase.database().ref("Metrics")
+
+    let count = 0;
+    countRef.on("value", (snapshot) => {
+      const metrics = snapshot.val();
+      console.log(metrics)
+      for ( let value in metrics) {
+        console.log("value: " + value)
+        console.log("metrics[value]: " + metrics[value])
+        count = Number(metrics[value]) + 1;
+        console.log("metrics[value]+1: " + count);
+      }
+    });
+
+
+    countRef.update({
+      value: Number(count)
+    });
+  }
+
+  useEffect(() => {
+    const countRef = firebase.database().ref("Metrics");
+    countRef.on("value", (snapshot) => {
+      const metrics = snapshot.val();
+      const metricsList = [];
+      for (let id in metrics) {
+        metricsList.push(metrics[id]);
+      }
+      setMetricsList(metricsList);
+    });
+
+
+
+  }, []);
+
 
   return (
   //   <div>
@@ -81,6 +127,11 @@ function Landing(props) {
           Circles
         </Button>
       </div>
+      {/* <input type="number" onChange={handleOnChange} value={title} /> */}
+      {/* <button onClick={updateCounts}>Add Counts</button> */}
+      {/* <div className='hero-container'>
+        {metricsList ? metricsList.map((metrics) => <p>Metrics: {metrics.title}</p>) : ''}
+      </div> */}
     </div>
   );
 }

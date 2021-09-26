@@ -40,3 +40,5 @@ from sklearn.metrics import accuracy_score as acc
 
 print(acc(np.round(model.predict(x_2)), y_2, normalize = True))
 
+from sklearn.metrics import accuracy_score
+print(accuracy_score(model.predict(x), y), True)
