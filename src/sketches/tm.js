@@ -10,10 +10,11 @@ class TM extends React.Component {
     
     async init(){
         this.URL = "../Model/my-pose-model/";
-        this.modelURL = this.URL + "model.json"
+        this.modelURL = this.URL + "model.json";
+        // console.log(this.modelURL)
         this.metadataURL = this.URL + "metadata.json";
-        this.model = await tmPose.load(this.modelURL, this.metadataURL);
-        this.maxPredictions = this.model.getTotalClasses();
+        this.model = ml5.poseNet('https://teachablemachine.withgoogle.com/models/3iU5gtESu/', this.modelReady);
+        this.maxPredictions = 2;
 
         this.size = 200;
         this.flip = true; // whether to flip the webcam
@@ -38,6 +39,10 @@ class TM extends React.Component {
 		p5.createCanvas(520, 360);
         this.init();
 	};
+
+    modelReady = () => {
+        console.log("poseNet Loaded!");
+    }
 
     async loop(timestamp) {
         this.webcam.update(); // update the webcam frame
