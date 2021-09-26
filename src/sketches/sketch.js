@@ -45,13 +45,11 @@ class Sketchy extends React.Component {
     }
 
     updateScore = (newScore) => {
-        console.log("In update log")
         const countRef = firebase.database().ref("Metrics")
         const id = this.props.my_id
-
-        countRef.update({
-            id: Number(newScore)
-        });
+        const map = {}
+        map[id] = Number(newScore)
+        countRef.update(map);
     }
 
     poseNetOn = (poses) => {
@@ -124,7 +122,6 @@ class Sketchy extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>react-p5</h1>
 				<Sketch setup={this.setup} draw={this.draw}/>
 			</div>
 		);

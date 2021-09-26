@@ -1,5 +1,4 @@
 import './video.scss'
-import { Moves } from '../constants.js'
 // import face from './face.jpeg'
 import  Sketchy  from "../sketches/sketch.js";
 import { useEffect, useState } from 'react'
