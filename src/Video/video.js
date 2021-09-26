@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import * as ml5 from "ml5";
 import Twilio from "../Twilio/twilio"
 
-function Video() {
+function Video(props) {
   const [predictions, setPredictions] = useState([])
   const classifyImg = () => {
     // Initialize the Image Classifier method with MobileNet
@@ -47,7 +47,7 @@ function Video() {
     <div>     
       {/* <img src={ face } id="image" width="400" alt="" /> */}
       {<Twilio/>}
-      {<Sketchy/>}
+      {<Sketchy setScore={props.setScore} score={props.score}/>}
       {predictions}
     </div>
   );

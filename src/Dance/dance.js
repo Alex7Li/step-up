@@ -9,6 +9,7 @@ function Dance(props) {
   const setCurPage = props.setCurPage
   const moveList = props.moveList
   const [play, { stop }] = useSound(props.song)
+  const [score, setScore] = useState(0)
 
   const goToLandingPage = () => {
     setCurPage(Pages.LandingPage)
@@ -38,7 +39,8 @@ function Dance(props) {
       <p>
         Dance Move: {moveList[currentMoveInd]}
       </p>
-      {<Video/>}
+      <p>Your score: {score}</p>
+      {<Video setScore={setScore} score={score}/>}
       {/* <input type="button" value="go back" onClick={goToLandingPage}/> */}
       <div className='hero-btns'>
         <Button

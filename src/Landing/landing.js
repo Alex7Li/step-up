@@ -59,6 +59,7 @@ function Landing(props) {
 
     countRef.update({
       value: Number(count)
+      
     });
   }
 
